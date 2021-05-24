@@ -10,6 +10,25 @@
 
         let geral = []
 
+    function cadastrarAlunos(){
+            cadastros :
+            while (true) {
+                let contador = 1
+                for (let linha = 0; linha < contador; linha++) {
+                    geral[linha] = []
+                    geral[linha][0] =+prompt("Digite a matrícula")
+                    geral[linha][1] = prompt("Digite o nome do aluno")
+                if (novoCadastro() == true){
+                    contador++
+                    continue
+                } else {
+                    break cadastros
+                  }
+                }
+             }
+            return contador 
+          }
+      
         function menu(){  
             verificador :
             while(true){
@@ -44,11 +63,15 @@
             geral[i][1] = novoNome
 
         }
-
-
         
-        menu()
-
+        function novoCadastro() {
+                return confirm(`Você quer resgistrar outro usuário?`)            
+            }
+            
+            console.log(geral)
+      
+      menu()
+      
     </script>
 </body>
 </html>
