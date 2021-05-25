@@ -63,6 +63,15 @@
                 return confirm(`Você quer resgistrar outro usuário?`)            
             }
 
+            function mostrarCadastros() {
+            let mostrarResultado = ""
+            for (let i = 0; i < 3; i++) {
+                for (let j = 0; j < 3; j++) {
+                    mostrarResultado += geral[i][j] + "\t"
+                }
+                mostrarResultado += "\n"
+            }
+        }
 
         verificador :
         while(true){        
@@ -75,12 +84,18 @@
                 editarNome()
                 break;
 
+            case 4:
+                mostrarCadastros()
             default:
                 break verificador
             }
         }
         console.log(geral)
+        
+       
 
+            
+            
       
     </script>
 </body>
