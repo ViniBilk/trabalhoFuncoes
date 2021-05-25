@@ -63,9 +63,17 @@
                 return confirm(`Você quer resgistrar outro usuário?`)            
             }
 
-            //Parte Bruno
 
-       
+            function mostrarCadastros() {
+            let mostrarResultado = ""
+            for (let i = 0; i < 3; i++) {
+                for (let j = 0; j < 3; j++) {
+                    mostrarResultado += geral[i][j] + "\t"
+                }
+                mostrarResultado += "\n"
+            }
+        }
+
         function receberNotas(geral){
            let j = matriculaExiste()
             let soma = 0
@@ -93,6 +101,10 @@
                 editarNome()
                 break;
 
+
+            case 4:
+                mostrarCadastros()
+
             case 3:
                 guardaNotas()
                 break;
@@ -102,9 +114,8 @@
             }
         }
         console.log(geral)
-
-
         
+       
     </script>
 </body>
 </html>
