@@ -63,6 +63,7 @@
                 return confirm(`Você quer resgistrar outro usuário?`)            
             }
 
+
             function mostrarCadastros() {
             let mostrarResultado = ""
             for (let i = 0; i < 3; i++) {
@@ -72,6 +73,22 @@
                 mostrarResultado += "\n"
             }
         }
+
+        function receberNotas(geral){
+           let j = matriculaExiste()
+            let soma = 0
+                for(let i = 2; i < 5; i++){
+                    geral[j][i] = +prompt(`Digite a ${i - 1}ª nota:`)
+                        soma += geral[j][i]
+                }
+            return [soma,j]
+            }    
+
+      function guardaNotas(){
+        let [soma,j] = receberNotas(geral)
+            geral[j].push = soma/ 3
+      }
+
 
         verificador :
         while(true){        
@@ -84,8 +101,14 @@
                 editarNome()
                 break;
 
+
             case 4:
                 mostrarCadastros()
+
+            case 3:
+                guardaNotas()
+                break;
+            
             default:
                 break verificador
             }
@@ -93,10 +116,6 @@
         console.log(geral)
         
        
-
-            
-            
-      
     </script>
 </body>
 </html>
