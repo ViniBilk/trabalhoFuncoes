@@ -8,14 +8,14 @@
 <body>
     <script>
 
-        let geral = []
+        let geral = [],
+            contadordeCadastros = 0
 
         function cadastrarAlunos() {
             while (true) {
-                let contador = 1,
-                j = 0
+                let contador = 1
                 for (let i = 0; i < contador; i++) {
-                    geral[j] = []
+                    geral[contadordeCadastros] = []
 
                     let [jaExiste, matricula] = matriculajaExiste()
 
@@ -23,9 +23,9 @@
                                 alert("Esta matricula já está cadastrada")
                         } else {
                             let nomedoAluno = prompt("Digite o nome do aluno")
-                            geral[j][1] = nomedoAluno
-                            geral[j][0] = matricula
-                            j++
+                            geral[contadordeCadastros][1] = nomedoAluno
+                            geral[contadordeCadastros][0] = matricula
+                            contadordeCadastros++
                         }
 
                         if (novoCadastro() == true) {
@@ -61,18 +61,20 @@
 
 
         function matriculaExiste(){
+            while(true){
             let matricula = +prompt("Qual a matricula do aluno?")
                 for(let i = 0;i < geral.length;i++){
                     if(matricula === geral[i][0]){
-                        return [i, true]
+                        return [true, i]
                     }
                 }
                 alert("Digite uma matricula válida!")
             }
+        }
 
-        function editarNome(){
-            let [existe,i] = matriculaExiste(geral)
-            let novoNome = prompt("Que nome deseja colocar?")
+        function editarNome() {
+            let [existe, i] = matriculaExiste(),
+                novoNome = prompt("Que nome deseja colocar?")
             geral[i][1] = novoNome
         }
         
@@ -85,18 +87,21 @@
                 let mostrarResultado = ""
             for (let i = 0; i < geral.length; i++) {
                 for (let j = 0; j < 6; j++) {
-                    mostrarResultado += geral[i][j] + "\t"
+                    if(geral[i][j] == undefined){
+                        geral[i][j] = "--"
+                    }
+                    mostrarResultado += String(geral[i][j]).padStart(9,' ');
                 }
                 mostrarResultado += "\n"
             }
             return (
-                    console.log("Matrícula  Nome   Nota 1  Nota 2  Nota 3  Média"),
+                    console.log("Matrícula     Nome   Nota 1   Nota 2   Nota 3    Média"),
                     console.log(mostrarResultado)
                     )
         }
 
         function receberNotas(geral){
-           let [j, existe] = matriculaExiste()
+           let [existe, j] = matriculaExiste()
             let soma = 0
                 for(let i = 2; i < 5; i++){
                     geral[j][i] = +prompt(`Digite a ${i - 1}ª nota:`)
@@ -107,7 +112,7 @@
 
       function guardaNotas(){
         let [soma,j] = receberNotas(geral)
-            geral[j].push(soma/ 3) 
+            geral[j][5] = (soma / 3).toFixed(2) 
       }
 
       function seletor(){
