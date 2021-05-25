@@ -47,12 +47,8 @@
                     alert("Digite um número válido")
                     }
                 }
-                
             }   
         }
-
-        
-
 
         function matriculajaExiste() {
             let matricula = +prompt("Digite a matrícula")
@@ -66,19 +62,16 @@
 
         function matriculaExiste(){
             let matricula = +prompt("Qual a matricula do aluno?")
-            while(true){
-                for(let i = 0;i < geral.length + 1;i++){
-                    if(matricula == geral[i][0]){
-                        return i
-                    } else if(i == geral.length + 1){
-                        alert("Digite uma matricula válida!")
+                for(let i = 0;i < geral.length;i++){
+                    if(matricula === geral[i][0]){
+                        return [i, true]
                     }
                 }
+                alert("Digite uma matricula válida!")
             }
-        }
 
         function editarNome(){
-            let i = matriculaExiste(geral)
+            let [existe,i] = matriculaExiste(geral)
             let novoNome = prompt("Que nome deseja colocar?")
             geral[i][1] = novoNome
         }
@@ -103,7 +96,7 @@
         }
 
         function receberNotas(geral){
-           let j = matriculaExiste()
+           let [j, existe] = matriculaExiste()
             let soma = 0
                 for(let i = 2; i < 5; i++){
                     geral[j][i] = +prompt(`Digite a ${i - 1}ª nota:`)
