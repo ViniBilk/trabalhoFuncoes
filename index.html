@@ -10,67 +10,77 @@
 
         let geral = []
 
-    function cadastrarAlunos(){
-            cadastros :
-            while (true) {
-                let contador = 1
-                for (let linha = 0; linha < contador; linha++) {
-                    geral[linha] = []
-                    geral[linha][0] =+prompt("Digite a matrícula")
-                    geral[linha][1] = prompt("Digite o nome do aluno")
-                if (novoCadastro() == true){
-                    contador++
-                    continue
-                } else {
-                    break cadastros
-                  }
+        function cadastrarAlunos(){
+                while (true) {
+                    let contador = 1
+                    for (let linha = 0; linha < contador; linha++) {
+                        geral[linha] = []
+                        geral[linha][0] =+prompt("Digite a matrícula")
+                        geral[linha][1] = prompt("Digite o nome do aluno")
+                    if (novoCadastro() == true){
+                        contador++
+                    } else {
+                        return 
+                    }
                 }
-             }
-            return contador 
-          }
-      
+            }
+        }
+        
         function menu(){  
-            verificador :
             while(true){
-                let opcao = +prompt("1) Cadastrar aluno\n2) Editar informações do aluno\n3) Cadastrar notas de um aluno\n4) Listar alunos\n0) Sair")
+                let numero = +prompt("1) Cadastrar aluno\n2) Editar informações do aluno\n3) Cadastrar notas de um aluno\n4) Listar alunos\n0) Sair")
                 for(let i = 0;i < 5;i++){
-                    if(opcao == i){
-                        break verificador
+                    if(numero == i){
+                        return numero
                     } else if (i == 4){
                     alert("Digite um número válido")
                     }
                 }
-            }
-            return opcao
+                
+            }   
         }
 
-        function matriculaExiste(geral){
+        function matriculaExiste(){
             let matricula = +prompt("Qual a matricula do aluno?")
             while(true){
-                for(let i = 0;i < contadorLinhas;i++){
+                for(let i = 0;i < geral.length + 1;i++){
                     if(matricula == geral[i][0]){
-                        return [matricula , i]
-                    } else {
-                         alert("Digite uma matricula válida!")
+                        return i
+                    } else if(i == geral.length + 1){
+                        alert("Digite uma matricula válida!")
                     }
                 }
             }
         }
 
         function editarNome(){
-            [matricula, i] = matriculaExiste(geral)
+            let i = matriculaExiste(geral)
             let novoNome = prompt("Que nome deseja colocar?")
             geral[i][1] = novoNome
-
         }
         
         function novoCadastro() {
                 return confirm(`Você quer resgistrar outro usuário?`)            
             }
-            
-            console.log(geral)
-      
-      menu()
+
+
+        verificador :
+        while(true){        
+        switch (menu()) {
+            case 1:
+                cadastrarAlunos()
+                break;
+        
+            case 2:
+                editarNome()
+                break;
+
+            default:
+                break verificador
+            }
+        }
+        console.log(geral)
+
       
     </script>
 </body>
