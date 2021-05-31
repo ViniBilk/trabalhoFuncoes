@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //console.log(carro);
+        //testeTeimoso();   
+
+        var listaBicicletas = []
+
+        listaBicicletas.push({ marca : "monark", cor : "branca", preco: 100 })
+        listaBicicletas.push({ marca : "caloi", cor : "preta", preco: 400 })
+        listaBicicletas.push({ marca : "mormaii", cor : "azul", preco: 200, infantil:true})
+     
+        console.log("----------------------------")
+
+        let total = 0;
+        listaBicicletas.forEach(bicicleta => {
+            for(let atributo in bicicleta){
+                console.log(atributo, "|", bicicleta[atributo])
+                
+                if (atributo == "preco"){
+                    total += bicicleta[atributo]
+                }
+            }
+            console.log("----")
+            console.log("TOTAL: " + total);
+        })
+
+        console.log(listaBicicletas);
+
+
+       function testeTeimoso(){
+           for(i = 0; i < 10; i++){   
+               let casa = "casa do Vini";
+               var carro = "Fusca";
+               console.log(casa);
+               console.log(carro);    
+           }
+           console.log("------")
+           console.log(casa);
+           console.log(carro);
+       }
+
+    </script>
+</body>
+</html>
